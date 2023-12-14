@@ -21,6 +21,11 @@ export async function getOne(filter: FilterQuery<IToDo>) {
   return todo;
 }
 
+export async function getAll(filter: FilterQuery<IToDo>) {
+  const todoList = await Todo.find(filter);
+  return todoList;
+}
+
 export async function update(filter: FilterQuery<IToDo>, data: IToDo) {
   return Todo.updateOne(filter, data);
 }

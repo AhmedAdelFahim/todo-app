@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import { IUser } from './user.interface';
 import User from './user.model';
 import Logger from '../helpers/logger';
 import * as userService from './user.service';
@@ -7,7 +6,7 @@ import * as userService from './user.service';
 class UserController {
   async signUp(req: Request, res: Response, next: NextFunction) {
     try {
-      const user: IUser = await User.create(req.body);
+      await User.create(req.body);
       Logger.log('debug', 'sign up successfully');
       res.status(201).send({ message: 'sign up successfully' });
     } catch (e) {
