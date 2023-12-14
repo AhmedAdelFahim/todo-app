@@ -30,6 +30,18 @@ class TodoController {
     }
   }
 
+  async getAll(req: any, res: Response, next: NextFunction) {
+    const { user } = req;
+    try {
+      const todoList = await todoService.getAll({
+        user_id: user.user_id,
+      });
+      res.status(200).send({ data: { todoList } });
+    } catch (e) {
+      return next(e);
+    }
+  }
+
   async update(req: any, res: Response, next: NextFunction) {
     const {
       params: { id },

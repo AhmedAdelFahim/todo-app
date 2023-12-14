@@ -13,6 +13,7 @@ todoRouter.post(
   TodoController.create,
 );
 
+todoRouter.get('/list', auth, TodoController.getAll);
 todoRouter.get('/:id', auth, TodoController.getOne);
 todoRouter.delete('/:id', auth, TodoController.deleteOne);
 todoRouter.put(
